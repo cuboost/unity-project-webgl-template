@@ -8,210 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- Update the page title -->
     <title>Your Game</title>
-    <style>
-        /* Delete the Unity generated CSS file located under the TemplateData folder. The colors are red for this project, but feel free to change them... */
-        body {
-            padding: 0;
-            margin: 0;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background: #661f1a;
-            color: white;
-        }
-
-        #unity-container {
-            position: absolute;
-        }
-
-        #unity-container.unity-desktop {
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        #unity-container.unity-mobile {
-            width: 100%;
-            height: 100%;
-        }
-
-        #unity-canvas {
-            background: #FFFFFF;
-            border-radius: 20px;
-            background: linear-gradient(to right, #ac2a21, #7e1811);
-            box-shadow: 5px 5px #2305039a;
-        }
-
-        .unity-mobile #unity-canvas {
-            width: 100%;
-            height: 100%;
-            border-radius: 0;
-        }
-
-        #unity-loading-bar {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        #unity-logo {
-            width: 154px;
-            height: 130px;
-            background: url('unity-logo-light.png') no-repeat center;
-        }
-
-        #unity-progress-bar-empty {
-            width: 141px;
-            height: 18px;
-            margin-top: 10px;
-            margin-left: 6.5px;
-            background: url('progress-bar-empty-light.png') no-repeat center;
-        }
-
-        #unity-progress-bar-full {
-            width: 0%;
-            height: 18px;
-            margin-top: 10px;
-            background: url('progress-bar-full-light.png') no-repeat center;
-        }
-
-        #unity-footer {
-            position: relative;
-        }
-
-        .unity-mobile #unity-footer {
-            display: none;
-        }
-
-        #unity-webgl-logo {
-            float: left;
-            width: 204px;
-            height: 38px;
-            background: url('webgl-logo.png') no-repeat center;
-            margin-top: 20px;
-        }
-
-        #unity-build-title {
-            float: right;
-            margin-right: 10px;
-            line-height: 38px;
-            font-family: arial;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        #unity-fullscreen-button {
-            float: right;
-            width: 38px;
-            height: 38px;
-            margin-top: 20px;
-        }
-
-        #unity-warning {
-            position: absolute;
-            left: 50%;
-            top: 5%;
-            transform: translate(-50%);
-            background: white;
-            padding: 10px;
-            display: none;
-            border-radius: 20px;
-        }
-
-        #unity-warning>div {
-            padding: 5px;
-            border-radius: 20px;
-        }
-
-        button {
-            position: absolute;
-            width: 120px;
-            padding: 12px 0;
-            font-size: 1rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            color: aliceblue;
-            background-color: #ac2a21;
-            transition: all 0.4s;
-            margin: 20px;
-        }
-
-        button:hover {
-            background-color: #8d231b;
-            color: aliceblue;
-        }
-
-        button:active {
-            background-color: #701d17;
-            color: rgb(223, 235, 245);
-        }
-
-        .about-game {
-            position: fixed;
-            opacity: 0;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: linear-gradient(to bottom right, #2a0907ae, #250502e2);
-            transition: all 1s;
-        }
-
-        .about-game-container {
-            background: linear-gradient(to right, #ac2a21, #7e1811);
-            width: 80vw;
-            height: fit-content;
-            border-radius: 40px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.5s;
-        }
-
-        .about-game-text {
-            height: 80vh;
-            overflow-y: auto;
-            padding: 10px;
-        }
-
-        .about-game-container h1 {
-            font-size: 5vw;
-            text-shadow: 3px 3px #2305039a;
-        }
-
-        .about-game-container hr {
-            width: 70px;
-            border: 3px solid aliceblue;
-            border-radius: 50px;
-            margin: 80px auto;
-        }
-
-        .close-btn {
-            text-decoration: none;
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            font-size: 40px;
-            transition: all 0.4s;
-        }
-
-        a {
-            color: white;
-        }
-
-        a:hover {
-            color: rgb(209, 209, 209);
-        }
-
-        a:active {
-            color: rgb(164, 164, 164);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -234,7 +31,7 @@
                 <div id="unity-warning"> </div>
                 <div id="unity-footer">
                     <button onclick="openAboutGame()">About game</button>
-                    <!-- Update the fullscreen button -->
+                    <!-- Update the path for the fullscreen button -->
                     <img src="full/screen/button" alt="Full Screen" id="unity-fullscreen-button">
                     <!-- Update the name of your Unity game -->
                     <div id="unity-build-title">Your game</div>
@@ -242,25 +39,10 @@
             </div>
         </div>
 
+        <!-- About Game Pop-up -->
+        <script src="script.js"></script>
+        <!-- Unity -->
         <script>
-            const backgroundAboutGame = document.getElementById("about-game");
-            const aboutGameContainer = document.getElementById("about-game-container");
-            // About Game Pop-up
-            function closeAboutGame() {
-                aboutGameContainer.style.opacity = "0";
-                backgroundAboutGame.style.opacity = "0";
-                setTimeout(() => {
-                    backgroundAboutGame.style.zIndex = "-100";
-                }, 1000);
-            };
-
-            function openAboutGame() {
-                backgroundAboutGame.style.zIndex = "200";
-                aboutGameContainer.style.opacity = "1";
-                backgroundAboutGame.style.opacity = "1";
-            };
-
-            // Unity
             var container = document.querySelector("#unity-container");
             var canvas = document.querySelector("#unity-canvas");
             var loadingBar = document.querySelector("#unity-loading-bar");
@@ -292,6 +74,7 @@
                 updateBannerVisibility();
             }
 
+            // TODO
             var buildUrl = "your/game/Build";
             var loaderUrl = buildUrl + "/Web.loader.js";
             var config = {
